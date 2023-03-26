@@ -4,6 +4,7 @@ from os.path import isdir, join, basename
 from pytube import YouTube
 from numpy import arange
 from shutil import rmtree
+from moviepy.editor import VideoFileClip, AudioFileClip
 
 
 def downloadVideo(link:str) -> str:
@@ -76,3 +77,10 @@ def getFrameSaveTS(cap:VideoCapture, fps:int) -> list[int]:
 	for i in arange(0, videoLength, 1/fps):
 		timestamps.append(i)
 	return timestamps
+
+def mp4ToMp3(mp4filepath:str, mp3filepath:str) -> None:
+	videoclip=VideoFileClip(mp4filepath)
+	audioclip=videoclip.audio
+	audioclip.write_audiofile(mp3filepath)
+	audioclip.close()
+	videoclip.close()
