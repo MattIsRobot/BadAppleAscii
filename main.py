@@ -1,6 +1,6 @@
 from videoManager import *
 from asciiTransformer import *
-from os import listdir, rename, remove, system
+from os import listdir, rename, remove, system, name
 from os.path import join, isfile
 import argparse
 from shutil import rmtree
@@ -53,9 +53,9 @@ t.daemon = True
 t.start()
 last = time()
 for i in displayFrames:
-	sleep((1/fps-0.00089)-(time()-last))
+	sleep(abs((1/fps-0.00089)-(time()-last)))
 	last = time()
-	system('cls')
+	system('cls' if name == 'nt' else 'clear')
 	print(i)
 		
 if not bool(args.sf):
