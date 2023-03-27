@@ -1,3 +1,7 @@
 venv
 __pycache__
 build
+source.mp4_frames
+source.mp4
+source.mp4_audio.mp3
+.idea
